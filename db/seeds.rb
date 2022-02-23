@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Flat.destroy_all if Rails.env == "development"
+
+5.times do
+  Flat.create!({ name: Faker::Company.name,
+                 address: Faker::Address.street_address,
+                 description: Faker::Lorem.paragraph,
+                 price_per_night: rand(30..100),
+                 number_of_guests: rand(1..4) })
+end
